@@ -126,33 +126,22 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
         }
     }
 
-    public void move(boolean up,boolean right,boolean left,boolean down) {
-        int tailX,tailY,prev_tailX,prev_tailY;
+    public void move(boolean up, boolean right, boolean left, boolean down) {
+        int tailX, tailY, prev_tailX, prev_tailY;
 
-        prev_tailX=headX;
-        prev_tailY=headY;
+        prev_tailX = headX;
+        prev_tailY = headY;
 
-        if(up) {
+        if (up) {
             headY -= 5;
+        } else if (right) {
+            headX += 5;
+        } else if (left) {
+            headX -= 5;
+        } else if (down) {
+            headY += 5;
         }
-        else if(right)
-
-    {
-        headX += 5;
-    }
-    else if(left)
-
-    {
-        headX -= 5;
-    }
-    else if(down)
-
-    {
-        headY += 5;
-    }
-        for(int i = 0; i<number_ofEatenFruits;i++)
-
-        {
+        for (int i = 0; i < number_ofEatenFruits; i++) {
             tailX = ntailX[i];
             tailY = ntailY[i];
 
@@ -165,12 +154,10 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
     }
 
 
-
-
     public boolean fruit_wasAte() {
         if (new Rectangle(headX, headY, 30, 30).intersects(
                 new Rectangle(fruit.getFruitX(), fruit.getFruitY(), 25, 25))) {
-            first_fruit_wasEaten=true;
+            first_fruit_wasEaten = true;
             number_ofEatenFruits++;
             return true;
         }
@@ -178,12 +165,12 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
     }
 
 
-        public void fruit_wasAte_Action(){
-            if(fruit_wasAte()) {
-               fruit.display_aFruitX();
-               fruit.display_aFruitY();
-            }
+    public void fruit_wasAte_Action() {
+        if (fruit_wasAte()) {
+            fruit.display_aFruitX();
+            fruit.display_aFruitY();
         }
-
     }
+
+}
 
